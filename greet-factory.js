@@ -1,26 +1,72 @@
-export default function Greet(namesIn) {
+export default function Greet() {
 
-    var tempStorageOfNames = namesIn || {};
+    // var tempStorageOfNames = namesIn || {};
 
-    function selectedLanguage(lang, names) {
-        var userNames = names;
+    // let greetNames = "";
+    // function selectedLanguage(lang, names) {
+    //     var userNames = names;
 
-        if (lang === "english" && names !== "") {
+    //     if (lang === "english" && names !== "") {
 
-            return "Hello, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
+    //         return "Hello, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
+    //     }
+
+    //     if (lang === "afrikaans" && names !== "") {
+
+    //         return "Hallo, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
+    //     }
+
+    //     if (lang === "xhosa" && names !== "") {
+
+    //         return "Molo, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
+    //     }
+
+    // }
+    // function selectedLanguage(lang, names) {
+    //     // if (names !== '') {
+    //         if (lang == "english") {
+    //             // var userNames = names.charAt(0).toUpperCase() + names.slice(1).toLowerCase();
+    //             greetNames = "Hello, " + names
+
+    //         }
+    //         if (lang == "afrikaans") {
+    //             greetNames = "Hallo, " + names
+
+    //         }
+    //         if (lang == "xhosa") {
+    //             greetNames = "Molo, " + names
+
+    //         // }
+    //     }
+    // }
+    // function getSelectedLanguages() {
+    //     return greetNames
+    // }
+
+let greeting = "";
+let name = "";
+
+    function makeGreet(name1, language) {
+        if (name1.match(/^[a-zA-Z]+$/)) {
+            name = name1.charAt(0).toUpperCase() + name1.slice(1).toLocaleLowerCase()
+            if (language == 'english') {
+                greeting = 'Hello, ' + name
+            }
+            if (language == 'swahili') {
+                greeting = 'Jambo, ' + name
+            }
+            if (language == 'isiXhosa') {
+                greeting = 'Molo, ' + name
+            }
         }
-
-        if (lang === "afrikaans" && names !== "") {
-
-            return "Hallo, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
-        }
-
-        if (lang === "xhosa" && names !== "") {
-
-            return "Molo, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
-        }
-
     }
+    function getGreeting() {
+        return greeting
+    }
+
+
+
+
 
     function getNameCounter(name) {
         name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
@@ -84,7 +130,7 @@ export default function Greet(namesIn) {
         return "red"
     };
     return {
-        selectedLanguage,
+        // selectedLanguage,
         getNameCounter,
         counter,
         getGeetedNames,
@@ -94,7 +140,12 @@ export default function Greet(namesIn) {
         clearRadioButtons,
         validData,
         invalidMessage,
-        addRed
+        addRed,
+        makeGreet,
+        getGreeting
+
+
+        // getSelectedLanguages
     };
 }
 

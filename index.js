@@ -15,21 +15,24 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function(req, res){
+    console.log( greetFunction.getGreeting());
     res.render('index', {
-        greeting : greetFunction.selectedLanguage()});
+        greeting : greetFunction.getGreeting()
+    });
         
 });
 
 app.post('/greetings', function(req, res){
-    greetFunction.selectedLanguage({
-        userName: req.body.names
-    })
-     console.log(req.body);
-    // res.redirect('/');
+    greetFunction.makeGreet(req.body.userName,req.body.radioLanguage);
+    console.log( greetFunction.getGreeting());
+
+     console.log(req.body.userName);
+     console.log(req.body.radioLanguage);
+     res.redirect('/');
 });
 app.post('/action', function(req, res){
-    // console.log(req.body.radioLanguage);
-    greetFunction.selectedLanguage(req.body.radioLanguage)
+    //  console.log(req.body.radioLanguage);
+    greetFunction.makeGreet(req.body.radioLanguage)
     res.redirect('/');
 });
 app.post('/actions', function(req, res){
