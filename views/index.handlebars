@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/greet.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <h1 class="">Greetings</h1>
+        <p class="resetMessage"></p>
+        <p class="">{{greeting.userName}}</p>
+        <p class="message"></p>
+
+
+
+        <div class="numberAndName">
+
+            <div>
+                <form action="/greetings" method="POST">
+                    {{!-- <p class="name" value="{{userName}}">helo</p> --}}
+
+                    <label>Name</label>
+                    <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">
+                    <button class="greetBtn" type="submit"> Greet me</button>
+
+                    <div class="radioButton">
+                        <form action="/action" method="POST">
+                            <label class="">
+                                <input type="radio" name="radioLanguage"  class="radioBtn" value="english">
+                                <span class="label-body">English</span>
+                            </label>
+                            <label class="">
+                                <input type="radio" name="radioLanguage"  class="radioBtn" value="afrikaans">
+                                <span class="label-body">Afrikaans</span>
+                            </label>
+                            <label class="">
+                                <input type="radio" name="radioLanguage"   class="radioBtn" value="xhosa">
+                                <span class="label-body">isiXhosa</span>
+                            </label>
+                        </form>
+
+                    </div>
+
+
+                </form>
+            </div>
+
+            <div>
+
+                <div class="number">
+                    <h5>Name Counter: <span class="counter numberCounter">0</span></h5>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <br>
+        <div>
+
+            {{!-- <button class="greetBtn" type="submit"> Greet me</button> --}}
+
+            {{!-- <button class="resetBtn">Reset</button> --}}
+        </div>
+    </div>
+
+</body>
+
+
+</html>
