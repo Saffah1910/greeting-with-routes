@@ -3,7 +3,7 @@
     <h1 class="">Greetings</h1>
     <p class="resetMessage"></p>
     {{!-- <p>{{greeting}}</p> --}}
-    <p class="message"></p>
+   
 
 
 
@@ -12,6 +12,7 @@
         <div>
             <form action="/greetings" method="POST">
                 <p>{{greeting}}</p>
+                 {{!-- <p class="message">{{errors}}</p> --}}
 
                 <label>Name</label>
                 <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">

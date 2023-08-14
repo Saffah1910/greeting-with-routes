@@ -3,21 +3,12 @@ click on the name it will show how mnay times greeted and the langues they were 
 
 <div class="row">
     <h1>Names Greeted</h1>
-    {{!-- <table> --}}
-        {{!-- <tr> --}}
-         
 
-
-            {{!--
-        </tr> --}}
         {{#each names_greeted}}
-        {{!-- <tr> --}}
-            {{!-- <a href="/counter"> --}}
-                <p> <a href="/counter"> {{this}} </a> </p>
-                {{!--
-            </a> --}}
+     
 
-            {{!-- </tr> --}}
+                <p> <a href="/counter/{{this}}"> {{this}} </a> </p>
+          
         {{/each}}
-        {{!-- </table> --}}
+     
 </div>

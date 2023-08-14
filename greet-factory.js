@@ -63,6 +63,15 @@ export default function Greet() {
     };
 
 
+    function userCount(name) {
+        for (const user in tempStorageOfNames) {
+            if (user === name) {
+                const element = tempStorageOfNames[user];
+                return element;
+            }
+        }
+    }
+
 
     function setErrors(name, checkedBtn) {
 
@@ -122,7 +131,8 @@ export default function Greet() {
         addRed,
         makeGreet,
         getGreeting,
-        objectListNames
+        objectListNames,
+        userCount
 
 
         // getSelectedLanguages
