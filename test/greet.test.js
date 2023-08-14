@@ -8,17 +8,17 @@ describe("Greet function", function () {
 
         it("if the name Amy is entered into the textbox and the language Xhosa is selected at the radio button return the message Molo, Amy", function () {
             var greetTests = Greet();
-            assert.equal("Molo, Amy", greetTests.selectedLanguage("xhosa", "amy"));
+            assert.equal("Molo,Amy", greetTests.makeGreet("amy","xhosa"));
         });
 
         it('if the name Bob is entered into the textbox and the language English is selected at the radio button return the message Hello, Bob', function () {
             var greetTests = Greet();
-            assert.equal("Hello, Bob", greetTests.selectedLanguage("english", "bob"));
+            assert.equal("Hello,Bob", greetTests.makeGreet( "bob","english"));
 
         });
         it('if the name Peter is entered into the textbox and the language Afrikaans is selected at the radio button return the message Hallo, Peter', function () {
             var greetTests = Greet();
-            assert.equal("Hallo, Peter", greetTests.selectedLanguage("afrikaans", "peter"));
+            assert.equal("Hallo,Peter", greetTests.makeGreet("peter","afrikaans",));
 
         });
     });

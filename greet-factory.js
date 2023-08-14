@@ -1,50 +1,10 @@
 export default function Greet() {
 
-    // var tempStorageOfNames = namesIn || {};
+    var tempStorageOfNames = {};
 
-    // let greetNames = "";
-    // function selectedLanguage(lang, names) {
-    //     var userNames = names;
-
-    //     if (lang === "english" && names !== "") {
-
-    //         return "Hello, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
-    //     }
-
-    //     if (lang === "afrikaans" && names !== "") {
-
-    //         return "Hallo, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
-    //     }
-
-    //     if (lang === "xhosa" && names !== "") {
-
-    //         return "Molo, " + userNames.charAt(0).toUpperCase() + userNames.slice(1).toLowerCase();
-    //     }
-
-    // }
-    // function selectedLanguage(lang, names) {
-    //     // if (names !== '') {
-    //         if (lang == "english") {
-    //             // var userNames = names.charAt(0).toUpperCase() + names.slice(1).toLowerCase();
-    //             greetNames = "Hello, " + names
-
-    //         }
-    //         if (lang == "afrikaans") {
-    //             greetNames = "Hallo, " + names
-
-    //         }
-    //         if (lang == "xhosa") {
-    //             greetNames = "Molo, " + names
-
-    //         // }
-    //     }
-    // }
-    // function getSelectedLanguages() {
-    //     return greetNames
-    // }
-
-let greeting = "";
-let name = "";
+    let greeting = "";
+    let name = "";
+    let amountGreeted = 0;
 
     function makeGreet(name1, language) {
         if (name1.match(/^[a-zA-Z]+$/)) {
@@ -52,10 +12,10 @@ let name = "";
             if (language == 'english') {
                 greeting = 'Hello, ' + name
             }
-            if (language == 'swahili') {
-                greeting = 'Jambo, ' + name
+            if (language == 'afrikaans') {
+                greeting = 'Hallo, ' + name
             }
-            if (language == 'isiXhosa') {
+            if (language == 'xhosa') {
                 greeting = 'Molo, ' + name
             }
         }
@@ -66,24 +26,42 @@ let name = "";
 
 
 
-
-
     function getNameCounter(name) {
-        name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+        // name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
         if (tempStorageOfNames[name] === undefined) {
-            tempStorageOfNames[name] = 1
+            tempStorageOfNames[name] = 0;
+            amountGreeted++
         }
+        tempStorageOfNames[name] += 1;
+        // return amountGreeted;
+
+        // else{
+        //     amountGreeted += 0;
+        //     return amountGreeted
+        // }
+
+    };
+    function objectListNames() {
+        var newList = Object.keys(tempStorageOfNames)
+        // console.log(newList);
+        return newList;
     }
 
     function counter() {
-        var newList = Object.keys(tempStorageOfNames)
-        console.log(newList);
-        return newList.length;
-    };
 
-    function getGeetedNames() {
+        return amountGreeted
+    };
+    function getCounter(nameOfUser) {
+        let namesCounter = tempStorageOfNames[nameOfUser]
+        return namesCounter;
+        // console.log(amountGreeted);
+        // return amountGreeted
+    }
+
+    function getGreetedNames() {
         return tempStorageOfNames
     };
+
 
 
     function setErrors(name, checkedBtn) {
@@ -133,7 +111,8 @@ let name = "";
         // selectedLanguage,
         getNameCounter,
         counter,
-        getGeetedNames,
+        getCounter,
+        getGreetedNames,
         setErrors,
         alertForResetBtn,
         addGreen,
@@ -142,7 +121,8 @@ let name = "";
         invalidMessage,
         addRed,
         makeGreet,
-        getGreeting
+        getGreeting,
+        objectListNames
 
 
         // getSelectedLanguages

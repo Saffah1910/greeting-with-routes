@@ -1,64 +1,67 @@
+<div class="container">
+
+    <h1 class="">Greetings</h1>
+    <p class="resetMessage"></p>
+    {{!-- <p>{{greeting}}</p> --}}
+    <p class="message"></p>
 
 
 
+    <div class="numberAndName">
 
-    <div class="container">
+        <div>
+            <form action="/greetings" method="POST">
+                <p>{{greeting}}</p>
 
-        <h1 class="">Greetings</h1>
-        <p class="resetMessage"></p>
-        {{!-- <p>{{greeting}}</p> --}}
-        <p class="message"></p>
+                <label>Name</label>
+                <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">
+                <button class="greetBtn" type="submit">Greet me</button>
 
+                <div class="radioButton">
+                    {{!-- <form action="/" method="POST"> --}}
+                        <label class="">
+                            <input type="radio" name="radioLanguage" class="radioBtn" value="english">
+                            <span class="label-body">English</span>
+                        </label>
+                        <label class="">
+                            <input type="radio" name="radioLanguage" class="radioBtn" value="afrikaans">
+                            <span class="label-body">Afrikaans</span>
+                        </label>
+                        <label class="">
+                            <input type="radio" name="radioLanguage" class="radioBtn" value="xhosa">
+                            <span class="label-body">isiXhosa</span>
+                        </label>
+                        {{!--
+                    </form> --}}
 
-
-        <div class="numberAndName">
-
-            <div>
-                <form action="/greetings" method="POST">
-                    <p>{{greeting}}</p>
-
-                    <label>Name</label>
-                    <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">
-                    <button class="greetBtn" type="submit">Greet me</button>
-
-                    <div class="radioButton">
-                        {{!-- <form action="/" method="POST"> --}}
-                            <label class="">
-                                <input type="radio" name="radioLanguage"  class="radioBtn" value="english">
-                                <span class="label-body">English</span>
-                            </label>
-                            <label class="">
-                                <input type="radio" name="radioLanguage"  class="radioBtn" value="afrikaans">
-                                <span class="label-body">Afrikaans</span>
-                            </label>
-                            <label class="">
-                                <input type="radio" name="radioLanguage"   class="radioBtn" value="xhosa">
-                                <span class="label-body">isiXhosa</span>
-                            </label>
-                        {{!-- </form> --}}
-
-                    </div>
-
-
-                </form>
-            </div>
-
-            <div>
-
-                <div class="number">
-                    <h5>Name Counter: <span class="counter numberCounter">0</span></h5>
                 </div>
-            </div>
 
 
+            </form>
         </div>
 
-
-        <br>
         <div>
 
-            {{!-- <button class="greetBtn" type="submit"> Greet me</button> --}}
-
-            {{!-- <button class="resetBtn">Reset</button> --}}
+            <div class="number">
+                <h5>Name Counter: <span class="counter numberCounter">{{count}}</span></h5>
+            </div>
         </div>
+        <form action="/greeted" method="GET">
+            <div>
+                <a href="/actions">Names greeted</a>
+            </div>
+        </form>
+
+
+
     </div>
+
+
+    <br>
+    <div>
+
+        {{!-- <button class="greetBtn" type="submit"> Greet me</button> --}}
+
+        {{!-- <button class="resetBtn">Reset</button> --}}
+    </div>
+</div>

@@ -24,7 +24,7 @@
  }
 
  .radioButton {
-     accent-color: #f72585;
+     accent-color: #8025f757;
  }
 
  .greetBtn {
@@ -81,7 +81,7 @@
 
  .name {
 
-     color: #f72585;
+     color: #de4fe2;
      margin: 0 auto;
      background-color: lightpink;
      background-image: url('./hello.jpg');
@@ -117,8 +117,8 @@
  ::placeholder {
      font-style: italic;
      font-size: 1em;
-     opacity: 0.5;
-     color: #f72585;
+     opacity: 0.8;
+     color: #a360da;
  }
 
  .message {
