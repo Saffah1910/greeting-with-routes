@@ -1,22 +1,23 @@
-{{!-- this file will only display whch names were greeted when u 
-click on the name it will show how mnay times greeted and the langues they were greeted in  --}}
+{{!-- this file will only display whch names were greeted when u
+click on the name it will show how mnay times greeted and the langues they were greeted in --}}
 
 <div class="row">
     <h1>Names Greeted</h1>
-    <table>
-        <tr>
-            <th>Name</th>
-            {{!-- <th>Amount Greeted</th> --}}
+    {{!-- <table> --}}
+        {{!-- <tr> --}}
+         
 
-            {{!-- <th>Price</th>
-            <th>When</th> --}}
-        </tr>
-        {{#each actions}}
-        <tr>
-            <td>{{userName}}</td>
-            {{!-- <td>{{cost}}</td>
-            <td>{{timestamp}}</td> --}}
-        </tr>
+
+            {{!--
+        </tr> --}}
+        {{#each names_greeted}}
+        {{!-- <tr> --}}
+            {{!-- <a href="/counter"> --}}
+                <p> <a href="/counter"> {{this}} </a> </p>
+                {{!--
+            </a> --}}
+
+            {{!-- </tr> --}}
         {{/each}}
-    </table>
+        {{!-- </table> --}}
 </div>

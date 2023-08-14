@@ -15,7 +15,6 @@
 
                 <label>Name</label>
                 <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">
-                <button class="greetBtn" type="submit">Greet me</button>
 
                 <div class="radioButton">
                     {{!-- <form action="/" method="POST"> --}}
@@ -31,33 +30,35 @@
                             <input type="radio" name="radioLanguage" class="radioBtn" value="xhosa">
                             <span class="label-body">isiXhosa</span>
                         </label>
+                        <br>
+
+                        <button class="greetBtn" type="submit">Greet me</button>
+
                         {{!--
                     </form> --}}
 
                 </div>
 
-
-            </form>
-        </div>
-
-        <div>
-
             <div class="number">
                 <h5>Name Counter: <span class="counter numberCounter">{{count}}</span></h5>
             </div>
         </div>
-        <form action="/greeted" method="GET">
+
+
+            </form>
+
             <div>
-                <a href="/actions">Names greeted</a>
+                <a href="/greeted" >Names greeted</a>
+                {{!-- href="/actions" --}}
             </div>
-        </form>
+        </div>
+
+        <div>
+
 
 
 
     </div>
-
-
-    <br>
     <div>
 
         {{!-- <button class="greetBtn" type="submit"> Greet me</button> --}}
