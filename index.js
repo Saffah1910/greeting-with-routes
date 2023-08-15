@@ -2,6 +2,8 @@ import express from 'express';
 import { engine } from 'express-handlebars';
 import bodyParser from 'body-parser';
 import Greet from './greet-factory.js';
+import flash from 'express-flash';
+import session from 'express-session';
 
 const app = express();
 const greetFunction = Greet();
@@ -10,25 +12,43 @@ app.engine('handlebars', engine());
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(session({
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(flash());
+
 
 app.get('/', function (req, res) {
-
+    let greetName = req.flash('info')[0];
+    let errorMessage = req.flash('error')[0];
+  
+        let people = !errorMessage
     res.render('index', {
-        greeting: greetFunction.getGreeting(),
+        greeting: people ?  greetName : "",
+        // greetFunction.makeGreet(req.body.userName, req.body.radioLanguage),
         count: greetFunction.counter(),
-        // errors :greetFunction.setErrors()
-    });
+        errors: errorMessage,
 
+    },
+    );
 });
 
 app.post('/greetings', function (req, res) {
-    greetFunction.makeGreet(req.body.userName, req.body.radioLanguage);
+
+
     greetFunction.getNameCounter(req.body.userName);
     // console.log(greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
     greetFunction.counter();
-    console.log(greetFunction.getCounter(req.body.userName));
+    //  console.log(greeted);
+    greetFunction.makeGreet(req.body.userName, req.body.radioLanguage);
+    req.flash('error', greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
+    req.flash('info', greetFunction.getGreeting());
+
     res.redirect('/');
 
 });
@@ -36,9 +56,10 @@ app.post('/greetings', function (req, res) {
 app.get('/greeted', function (req, res) {
     res.render('greeted', {
         names_greeted: greetFunction.objectListNames(),
+        // errors: greetFunction.setErrors(req.body.userName, req.body.radioLanguage)
     }
     );
-    console.log(greetFunction.getGreetedNames());
+
 
 });
 app.get('/counter', function (req, res) {
@@ -50,7 +71,7 @@ app.get('/counter', function (req, res) {
 });
 app.get('/counter/:user_name', function (req, res) {
     const user_name = req.params.user_name;
-   let userCount = greetFunction.userCount(user_name)
+    let userCount = greetFunction.userCount(user_name)
     res.render('counter',
         {
             userCount,
@@ -59,6 +80,10 @@ app.get('/counter/:user_name', function (req, res) {
         });
 
 });
+// app.get('/the-route', function (req, res) {
+//     req.flash('info', 'Flash Message Added');
+//     res.redirect('/');
+// });
 
 const PORT = process.env.PORT || 3015;
 

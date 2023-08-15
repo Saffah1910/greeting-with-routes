@@ -3,7 +3,7 @@
     <h1 class="">Greetings</h1>
     <p class="resetMessage"></p>
     {{!-- <p>{{greeting}}</p> --}}
-   
+
 
 
 
@@ -11,8 +11,19 @@
 
         <div>
             <form action="/greetings" method="POST">
-                <p>{{greeting}}</p>
-                 {{!-- <p class="message">{{errors}}</p> --}}
+                {{#if greeting}} <p class="">{{greeting}}</p>{{/if}}
+                {{#if errors}} <p class="red">{{errors}}</p>{{/if}}
+                {{!-- {{#if successMessage}}
+                <div class="success">
+                    <p>{{successMessage}}</p>
+                </div>
+                {{/if}}
+
+                {{#if errorMessage}}
+                <div class="error">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}} --}}
 
                 <label>Name</label>
                 <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">
@@ -40,21 +51,21 @@
 
                 </div>
 
-            <div class="number">
-                <h5>Name Counter: <span class="counter numberCounter">{{count}}</span></h5>
-            </div>
+                <div class="number">
+                    <h5>Name Counter: <span class="counter numberCounter">{{count}}</span></h5>
+                </div>
         </div>
 
 
-            </form>
-
-            <div>
-                <a href="/greeted" >Names greeted</a>
-                {{!-- href="/actions" --}}
-            </div>
-        </div>
+        </form>
 
         <div>
+            <a href="/greeted">Names greeted</a>
+            {{!-- href="/actions" --}}
+        </div>
+    </div>
+
+    <div>
 
 
 

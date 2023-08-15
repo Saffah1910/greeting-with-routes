@@ -4,22 +4,24 @@ export default function Greet() {
 
     let greeting = "";
     let name = "";
+    let language = "";
     let amountGreeted = 0;
 
     function makeGreet(name1, language) {
         if (name1.match(/^[a-zA-Z]+$/)) {
             name = name1.charAt(0).toUpperCase() + name1.slice(1).toLocaleLowerCase()
-            if (language == 'english') {
+            if (language == 'english' && name !== "") {
                 greeting = 'Hello, ' + name
             }
-            if (language == 'afrikaans') {
+            if (language == 'afrikaans'  && name !== "") {
                 greeting = 'Hallo, ' + name
             }
-            if (language == 'xhosa') {
+            if (language == 'xhosa' && name !== "") {
                 greeting = 'Molo, ' + name
             }
         }
     }
+    
     function getGreeting() {
         return greeting
     }
@@ -28,7 +30,7 @@ export default function Greet() {
 
     function getNameCounter(name) {
         // name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        if (tempStorageOfNames[name] === undefined) {
+        if (tempStorageOfNames[name] === undefined && name !== "") {
             tempStorageOfNames[name] = 0;
             amountGreeted++
         }
@@ -80,10 +82,10 @@ export default function Greet() {
         if (!name && !checkedBtn) {
             message = "Please enter a name & select a language"
         }
-        else if (!name && checkedBtn) {
+        else if (name && !checkedBtn) {
             message = "Please select a language"
         }
-        else if (!checkedBtn && name) {
+        else if (checkedBtn && !name) {
             message = "Please enter a name"
         }
 
