@@ -11,7 +11,7 @@
 
         <div>
             <form action="/greetings" method="POST">
-                {{#if greeting}} <p class="">{{greeting}}</p>{{/if}}
+                {{#if greeting}} <p class="name">{{greeting}}</p>{{/if}}
                 {{#if errors}} <p class="red">{{errors}}</p>{{/if}}
                 {{!-- {{#if successMessage}}
                 <div class="success">
