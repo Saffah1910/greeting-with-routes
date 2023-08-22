@@ -1,19 +1,19 @@
-export default function Greet() {
+export default function Greet(db) {
 
     var tempStorageOfNames = {};
 
     let greeting = "";
     let name = "";
-    let language = "";
+    // let language = "";
     let amountGreeted = 0;
 
     function makeGreet(name1, language) {
-        if (name1.match(/^[a-zA-Z]+$/)) {
-            name = name1.charAt(0).toUpperCase() + name1.slice(1).toLocaleLowerCase()
+        if (name1.match(/^[a-zA-Z]\S+$/)) { 
+            name = name1.charAt(0).toUpperCase() + name1.slice(1).toLowerCase()
             if (language == 'english' && name !== "") {
                 greeting = 'Hello, ' + name
             }
-            if (language == 'afrikaans'  && name !== "") {
+            if (language == 'afrikaans' && name !== "") {
                 greeting = 'Hallo, ' + name
             }
             if (language == 'xhosa' && name !== "") {
@@ -21,44 +21,53 @@ export default function Greet() {
             }
         }
     }
-    
+
     function getGreeting() {
         return greeting
     }
-
-
-
     function getNameCounter(name) {
-        // name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-        if (tempStorageOfNames[name] === undefined && name !== "") {
-            tempStorageOfNames[name] = 0;
-            amountGreeted++
+        if (name.trim() !== "") { // Check if the trimmed name is not an empty string
+            const lowercaseName = name.toLowerCase(); // Convert the name to lowercase
+            
+            if (tempStorageOfNames[lowercaseName] === undefined) {
+                tempStorageOfNames[lowercaseName] = 0;
+                amountGreeted++;
+            }
+        
+            tempStorageOfNames[lowercaseName] += 1;
         }
-        tempStorageOfNames[name] += 1;
-        // return amountGreeted;
+    }
+    
+    // function getNameCounter(name) {
+    //     const lowercaseName = name.toLowerCase(); // Convert the name to lowercase
+        
+    //     if (tempStorageOfNames[lowercaseName] === undefined && lowercaseName !== "") {
+    //         tempStorageOfNames[lowercaseName] = 0;
+    //         amountGreeted++;
+    //     }
+    
+    //     tempStorageOfNames[lowercaseName] += 1;
+    // }
+    
 
-        // else{
-        //     amountGreeted += 0;
-        //     return amountGreeted
-        // }
 
-    };
+
     function objectListNames() {
         var newList = Object.keys(tempStorageOfNames)
-        // console.log(newList);
+        console.log(newList);
         return newList;
     }
 
-    function counter() {
+    // function counter() {
 
-        return amountGreeted
-    };
+    //     return amountGreeted
+    // };
     function getCounter(nameOfUser) {
         let namesCounter = tempStorageOfNames[nameOfUser]
         return namesCounter;
         // console.log(amountGreeted);
         // return amountGreeted
-    }
+    };
 
     function getGreetedNames() {
         return tempStorageOfNames
@@ -121,7 +130,7 @@ export default function Greet() {
     return {
         // selectedLanguage,
         getNameCounter,
-        counter,
+        // counter,
         getCounter,
         getGreetedNames,
         setErrors,

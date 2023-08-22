@@ -92,8 +92,10 @@
      background-position: 10px center;
      width: fit-content;
      /* display: none; */
+     
 
  }
+ 
 
  .resetBtn {
      font-size: 20px;
@@ -169,3 +171,31 @@
 
      }
  }
+
+ /* .rowe {
+background: #001eff;
+ } */
+
+/* 
+ .greeting-box {
+    background-color: #f2f2f2;
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .greeting-box h2 {
+    color: #3498db;
+    margin-bottom: 10px;
+  }
+  
+  .greeting-box p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+   */
