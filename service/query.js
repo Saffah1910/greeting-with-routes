@@ -33,7 +33,7 @@ export default function namesQuery(db) {
 
     //tnis function should clear the table if the reset button is clickec
     async function clearDbTable() {
-        await db.none("DELETE FROM greetings_table")
+        await db.none("DELETE FROM greeting_table")
     }
 
 

@@ -103,14 +103,14 @@ app.get('/counter/:user_name', function (req, res) {
         });
 
 });
-// app.post('/reset', function(req, res){
-//     res.render('reset',
-//     {
-//         resetCounter : clearDbTable() 
-//     });
-//     res.redirect('/');
+app.post('/reset', function(req, res){
+    res.render('reset',
+    {
+        resetCounter : dbLogic.clearDbTable() 
+    });
+  
 
-// })
+})
 
 
 // app.get('/the-route', function (req, res) {
