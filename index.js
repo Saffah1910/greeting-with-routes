@@ -39,6 +39,7 @@ app.get('/', async function (req, res) {
     // console.log(data);
     let greetName = req.flash('info')[0];
     let errorMessage = req.flash('error')[0];
+    let reset = req.flash('resetMessage')[0];
 
     let people = !errorMessage
     res.render('index', {
@@ -46,8 +47,10 @@ app.get('/', async function (req, res) {
         greeting: people ? greetName : "",
 
         // greetFunction.makeGreet(req.body.userName, req.body.radioLanguage),
-        count:  await dbLogic.counter(),
+        count: await dbLogic.counter(),
         errors: errorMessage,
+        resetCounter: reset
+        
 
     },
     );
@@ -56,7 +59,7 @@ app.get('/', async function (req, res) {
 app.post('/greetings', async function (req, res) {
     console.log(dbLogic.counter())
 
-   
+
     greetFunction.getNameCounter(req.body.userName);
     // console.log(greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
     // greetFunction.counter();
@@ -103,12 +106,11 @@ app.get('/counter/:user_name', function (req, res) {
         });
 
 });
-app.post('/reset', function(req, res){
-    res.render('reset',
-    {
-        resetCounter : dbLogic.clearDbTable() 
-    });
-  
+app.post('/reset', async function (req, res) {
+    const resetCounter = await dbLogic.clearDbTable()
+    req, flash('resetMessage', "The counter will now reset")
+
+    res.redirect('/');
 
 })
 

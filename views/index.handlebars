@@ -73,7 +73,9 @@
     </div>
     <div>
         <form action="/reset" method="POST">
-
+            {{#if resetCounter}}
+            <p class="red">{{resetCounter}}</p>
+            {{/if}}
             <button class="resetBtn" type="submit">Reset</button>
         </form>
 
