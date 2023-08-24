@@ -40,6 +40,7 @@ app.get('/', async function (req, res) {
     let greetName = req.flash('info')[0];
     let errorMessage = req.flash('error')[0];
     let reset = req.flash('resetMessage')[0];
+    let count = await dbLogic.counter(req.body.userName);
 
     let people = !errorMessage
     res.render('index', {
@@ -47,33 +48,45 @@ app.get('/', async function (req, res) {
         greeting: people ? greetName : "",
 
         // greetFunction.makeGreet(req.body.userName, req.body.radioLanguage),
-        count: await dbLogic.counter(),
+        
+        count,
         errors: errorMessage,
         resetCounter: reset
-        
+
 
     },
     );
 });
 
 app.post('/greetings', async function (req, res) {
-    console.log(dbLogic.counter())
+    // console.log(dbLogic.counter())
 
 
-    greetFunction.getNameCounter(req.body.userName);
+    // greetFunction.getNameCounter(req.body.userName);
     // console.log(greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
     // greetFunction.counter();
     //  console.log(greeted);
 
+    // if (req.body.userName !== "" && !req.body.radioLanguage) {
+        dbLogic.addName(req.body.userName);
+    // }
+
+    // const userName = req.body.userName;
+
+    // if (userName.trim() !== "") { // Check if the input is not empty after trimming whitespace
+    //     await dbLogic.addName(userName)
+    // // }
 
 
-    dbLogic.addName(req.body.userName);
-    greetFunction.makeGreet(req.body.userName, req.body.radioLanguage);
+    // if (req.body.userName !== "" && !req.body.radioLanguage) {
+
+        await greetFunction.makeGreet(req.body.userName, req.body.radioLanguage);
+
+
     req.flash('error', greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
     req.flash('info', greetFunction.getGreeting());
 
     res.redirect('/');
-
 });
 
 app.get('/greeted', async function (req, res) {
@@ -87,7 +100,7 @@ app.get('/greeted', async function (req, res) {
 
 
 });
-app.get('/counter', function (req, res) {
+app.get('/counter', async function (req, res) {
 
 
     res.render('counter', {
@@ -95,9 +108,9 @@ app.get('/counter', function (req, res) {
     }
     );
 });
-app.get('/counter/:user_name', function (req, res) {
+app.get('/counter/:user_name', async function (req, res) {
     const user_name = req.params.user_name;
-    let userCount = greetFunction.userCount(user_name)
+    let userCount = await greetFunction.userCount(user_name)
     res.render('counter',
         {
             userCount,

@@ -7,8 +7,8 @@ export default function Greet(db) {
     // let language = "";
     let amountGreeted = 0;
 
-    function makeGreet(name1, language) {
-        if (name1.match(/^[a-zA-Z]\S+$/)) { 
+    async function makeGreet(name1, language) {
+        if (name1.match(/^[a-zA-Z]\S+$/)) {
             name = name1.charAt(0).toUpperCase() + name1.slice(1).toLowerCase()
             if (language == 'english' && name !== "") {
                 greeting = 'Hello, ' + name
@@ -28,27 +28,27 @@ export default function Greet(db) {
     function getNameCounter(name) {
         if (name.trim() !== "") { // Check if the trimmed name is not an empty string
             const lowercaseName = name.toLowerCase(); // Convert the name to lowercase
-            
+
             if (tempStorageOfNames[lowercaseName] === undefined) {
                 tempStorageOfNames[lowercaseName] = 0;
                 amountGreeted++;
             }
-        
+
             tempStorageOfNames[lowercaseName] += 1;
         }
     }
-    
+
     // function getNameCounter(name) {
     //     const lowercaseName = name.toLowerCase(); // Convert the name to lowercase
-        
+
     //     if (tempStorageOfNames[lowercaseName] === undefined && lowercaseName !== "") {
     //         tempStorageOfNames[lowercaseName] = 0;
     //         amountGreeted++;
     //     }
-    
+
     //     tempStorageOfNames[lowercaseName] += 1;
     // }
-    
+
 
 
 
