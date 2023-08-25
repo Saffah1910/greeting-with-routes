@@ -13,17 +13,6 @@
             <form action="/greetings" method="POST">
                 {{#if greeting}} <p class="name">{{greeting}}</p>{{/if}}
                 {{#if errors}} <p class="red">{{errors}}</p>{{/if}}
-                {{!-- {{#if successMessage}}
-                <div class="success">
-                    <p>{{successMessage}}</p>
-                </div>
-                {{/if}}
-
-                {{#if errorMessage}}
-                <div class="error">
-                    <p>{{errorMessage}}</p>
-                </div>
-                {{/if}} --}}
 
                 <label>Name</label>
                 <input type="text" class="textArea" id="key" placeholder="Please enter name" name="userName">
@@ -54,10 +43,12 @@
                 <div class="number">
                     <h5>Name Counter: <span class="counter numberCounter">{{count}}</span></h5>
                 </div>
-        </div>
+            </div>
 
 
         </form>
+
+        
 
         <div>
             <a href="/greeted">Names greeted</a>
@@ -73,9 +64,11 @@
     </div>
     <div>
         <form action="/reset" method="POST">
-            {{#if resetCounter}}
+            {{#if reset}}<p class="green">{{reset}}</p>{{/if}}
+
+            {{!-- {{#if resetCounter}}
             <p class="red">{{resetCounter}}</p>
-            {{/if}}
+            {{/if}} --}}
             <button class="resetBtn" type="submit">Reset</button>
         </form>
 

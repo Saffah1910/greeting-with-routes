@@ -3,6 +3,14 @@ body {
     position: relative;
     background-image: linear-gradient(to right, rgba(4, 175, 243, 0), rgb(77, 179, 211));
 }
+.greetedh1{
+    text-align: center;
+   
+}
+a{ 
+    color: black;
+    text-decoration: none;
+}
 
 .container {
     font-size: 30px;
@@ -122,6 +130,54 @@ body {
     border-radius: 10px;
     font-size: 20px;
 }
+.green {
+    border: 1px solid;
+    margin: 0 auto;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image: url('../css/resetGreen.png');
+    width: fit-content;
+    border: 2px solid #124105c2;
+    border-radius: 10px;
+    font-size: 20px;
+
+
+}
+
+.backBtn {
+    display: flex;
+    height: 3em;
+    width: 100px;
+    align-items: center;
+    justify-content: center;
+    background-color: #eeeeee4b;
+    border-radius: 3px;
+    letter-spacing: 1px;
+    transition: all 0.2s linear;
+    cursor: pointer;
+    border: none;
+    background: #539ba493;
+   }
+   
+   .backBtn > svg {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+    transition: all 0.4s ease-in;
+   }
+   
+   .backBtn:hover > svg {
+    font-size: 1.2em;
+    transform: translateX(-5px);
+   }
+   
+   .backBtn:hover {
+    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+    transform: translateY(-2px);
+   }
 
 /* ::placeholder {
     font-style: italic;

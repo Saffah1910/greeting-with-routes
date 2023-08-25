@@ -8,15 +8,22 @@ import pgPromise from 'pg-promise';
 import 'dotenv/config';
 import namesQuery from './service/query.js';
 
+import HomeRoute from './routes/indexRoutes.js';
+import greetingRoute from './routes/greetingRoutes.js';
+import CounterRoutes from './routes/counterRoutes.js';
+
+
 const pgp = pgPromise({})
-
 const connectionString = process.env.DATABASE_URL;
-
 const db = pgp(connectionString);
 
 const app = express();
 const greetFunction = Greet(db);
 const dbLogic = namesQuery(db);
+
+const indexRoutes = HomeRoute(dbLogic);
+const greetRoute = greetingRoute(dbLogic, greetFunction);
+const counter = CounterRoutes(dbLogic,greetFunction);
 
 
 app.engine('handlebars', engine());
@@ -34,104 +41,18 @@ app.use(session({
 app.use(flash());
 
 
-app.get('/', async function (req, res) {
-    // let data = await db.any("select * from greeting_table");
-    // console.log(data);
-    let greetName = req.flash('info')[0];
-    let errorMessage = req.flash('error')[0];
-    let reset = req.flash('resetMessage')[0];
-    let count = await dbLogic.counter(req.body.userName);
+app.get('/', indexRoutes.get);
 
-    let people = !errorMessage
-    res.render('index', {
+app.post('/greetings', greetRoute.addName);
 
-        greeting: people ? greetName : "",
+app.get('/greeted', greetRoute.getNameList);
 
-        // greetFunction.makeGreet(req.body.userName, req.body.radioLanguage),
-        
-        count,
-        errors: errorMessage,
-        resetCounter: reset
+app.get('/counter', counter.total,);
 
+app.get('/counter/:user_name', counter.userTotal);
 
-    },
-    );
-});
+app.post('/reset',counter.resetCounter)
 
-app.post('/greetings', async function (req, res) {
-    // console.log(dbLogic.counter())
-
-
-    // greetFunction.getNameCounter(req.body.userName);
-    // console.log(greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
-    // greetFunction.counter();
-    //  console.log(greeted);
-
-    // if (req.body.userName !== "" && !req.body.radioLanguage) {
-        dbLogic.addName(req.body.userName);
-    // }
-
-    // const userName = req.body.userName;
-
-    // if (userName.trim() !== "") { // Check if the input is not empty after trimming whitespace
-    //     await dbLogic.addName(userName)
-    // // }
-
-
-    // if (req.body.userName !== "" && !req.body.radioLanguage) {
-
-        await greetFunction.makeGreet(req.body.userName, req.body.radioLanguage);
-
-
-    req.flash('error', greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
-    req.flash('info', greetFunction.getGreeting());
-
-    res.redirect('/');
-});
-
-app.get('/greeted', async function (req, res) {
-    // console.log(dbLogic.getGreetedNames())
-    res.render('greeted', {
-        names_greeted: dbLogic.getGreetedNames()
-        // greetFunction.objectListNames(),
-        // errors: greetFunction.setErrors(req.body.userName, req.body.radioLanguage)
-    }
-    );
-
-
-});
-app.get('/counter', async function (req, res) {
-
-
-    res.render('counter', {
-        nameCounter: greetFunction.getGreetedNames(),
-    }
-    );
-});
-app.get('/counter/:user_name', async function (req, res) {
-    const user_name = req.params.user_name;
-    let userCount = await greetFunction.userCount(user_name)
-    res.render('counter',
-        {
-            userCount,
-            user_name,
-            counter: greetFunction.getGreetedNames(user_name)
-        });
-
-});
-app.post('/reset', async function (req, res) {
-    const resetCounter = await dbLogic.clearDbTable()
-    req, flash('resetMessage', "The counter will now reset")
-
-    res.redirect('/');
-
-})
-
-
-// app.get('/the-route', function (req, res) {
-//     req.flash('info', 'Flash Message Added');
-//     res.redirect('/');
-// });
 
 const PORT = process.env.PORT || 3015;
 
