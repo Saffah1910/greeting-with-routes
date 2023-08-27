@@ -39,16 +39,6 @@ export default function Greet(db) {
         }
     }
 
-    // function getNameCounter(name) {
-    //     const lowercaseName = name.toLowerCase(); // Convert the name to lowercase
-
-    //     if (tempStorageOfNames[lowercaseName] === undefined && lowercaseName !== "") {
-    //         tempStorageOfNames[lowercaseName] = 0;
-    //         amountGreeted++;
-    //     }
-
-    //     tempStorageOfNames[lowercaseName] += 1;
-    // }
 
 
 

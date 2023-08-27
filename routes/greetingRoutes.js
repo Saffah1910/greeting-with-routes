@@ -9,6 +9,7 @@ export default function GreetingRoute(dbLogic,greetFunction){
         await greetFunction.makeGreet(req.body.userName, req.body.radioLanguage);
         req.flash('error', greetFunction.setErrors(req.body.userName, req.body.radioLanguage));
         req.flash('info', greetFunction.getGreeting());
+        
     
         res.redirect('/');
     }
