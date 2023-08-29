@@ -106,38 +106,23 @@ export default function Greet(db) {
     function addGreen() {
         return "green"
     };
-    function validData(name) {
-        let regEx = /^[a-zA-Z]\S+$/
-        return regEx.test(name)
-    };
-    function invalidMessage(name) {
-        if (validData(name) == false) {
-            return "Enter alphabets only"
-        }
-    };
+ 
     function addRed() {
         return "red"
     };
     return {
-        // selectedLanguage,
         getNameCounter,
-        // counter,
         getCounter,
         getGreetedNames,
         setErrors,
         alertForResetBtn,
         addGreen,
         clearRadioButtons,
-        validData,
-        invalidMessage,
         addRed,
         makeGreet,
         getGreeting,
         objectListNames,
         userCount
-
-
-        // getSelectedLanguages
     };
 }
 

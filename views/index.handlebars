@@ -1,16 +1,19 @@
 <div class="container">
 
     <h1 class="">Greetings</h1>
-    <p class="resetMessage"></p>
-    {{!-- <p>{{greeting}}</p> --}}
-
-
-
-
     <div class="numberAndName">
 
         <div>
             <form action="/greetings" method="POST">
+            <script>
+                setTimeout(function(){
+                    document.querySelector(".name").style.display = "none";},3000)
+            </script>
+              <script>
+                setTimeout(function(){
+                    document.querySelector(".red").style.display = "none";},3000)
+            </script>
+
                 {{#if greeting}} <p class="name">{{greeting}}</p>{{/if}}
                 {{#if errors}} <p class="red">{{errors}}</p>{{/if}}
 
@@ -44,12 +47,7 @@
                     <h5>Name Counter: <span class="counter numberCounter">{{count}}</span></h5>
                 </div>
             </div>
-
-
         </form>
-
-        
-
         <div>
             <a href="/greeted">Names greeted</a>
             {{!-- href="/actions" --}}
@@ -57,18 +55,16 @@
     </div>
 
     <div>
-
-
-
+<br>
 
     </div>
     <div>
         <form action="/reset" method="POST">
+            <script>
+                setTimeout(function(){
+                    document.querySelector(".green").style.display = "none";},3000)
+            </script>
             {{#if reset}}<p class="green">{{reset}}</p>{{/if}}
-
-            {{!-- {{#if resetCounter}}
-            <p class="red">{{resetCounter}}</p>
-            {{/if}} --}}
             <button class="resetBtn" type="submit">Reset</button>
         </form>
 

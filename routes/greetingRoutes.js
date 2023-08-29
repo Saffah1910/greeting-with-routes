@@ -16,7 +16,7 @@ export default function GreetingRoute(dbLogic,greetFunction){
     async function getNameList(req, res) {
 
         const names_greeted = await dbLogic.getGreetedNames();
-        console.log(names_greeted);
+    //    console.log(names_greeted);
     
         res.render('greeted', {
             names_greeted: names_greeted

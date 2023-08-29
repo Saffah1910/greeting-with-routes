@@ -54,7 +54,7 @@ app.get('/counter/:user_name', counter.userTotal);
 app.post('/reset',counter.resetCounter)
 
 
-const PORT = process.env.PORT || 3015;
+const PORT = process.env.PORT || 3011;
 
 app.listen(PORT, function () {
     console.log("App started at port", PORT);

@@ -3,7 +3,7 @@ export default function namesQuery(db) {
 
     async function updateAndInsertName(username) {
         if (!username || !/^[A-Za-z]+$/.test(username)) {
-            return; // Return if the username is empty or contains non-alphabet characters
+            return false; // Return if the username is empty or contains non-alphabet characters
         }
 
         // Convert the username to lowercase to handle case-insensitivity
@@ -30,17 +30,6 @@ export default function namesQuery(db) {
         }
     }
 
-    //this function adds the name to the table
-    //     async function addName(name) {
-
-    //         if (name) {
-    //             await db.none("insert into greeting_table (names, amount_greeted) values ($1,$2)", [name, 1])
-    //         }
-    //     }
-
-    // async function updateName(name){
-    //         await db.none('UPDATE greeting_table set amount_greeted = amount_greeted+1 where names =$1', [name])
-    // }
 
 
     async function getGreetedNames() {
@@ -62,25 +51,20 @@ export default function namesQuery(db) {
         let results = await db.any("SELECT COUNT(*) from greeting_table");
         return results[0].count; // Access the count value from the result
 
-        // return results.rows
     }
 
     //this function is for the counter of each user
     async function userCounter(name) {
-        let results = await db.any("SELECT amount_greeted from greeting_table where names = $1", [name]);
-        return results.rows
+        let results = await db.oneOrNone("SELECT amount_greeted FROM greeting_table WHERE names = $1", [name]);
+     
+    console.log(results);
+     return results;
     }
 
     //everytime a user is greeted the table gets updated
     async function updateCounter(name) {
         await db.none("UPDATE amount_greeted SET amount_greeted + 1 WHERE names = $1 ", [name])
     }
-
-    // async function updateCounter(name) {
-    //     await db.none("UPDATE greeting_table SET amount_greeted = amount_greeted + 1 WHERE names = $1", [name]);
-    // }
-
-
 
     //tnis function should clear the table if the reset button is clickec
     async function clearDbTable() {

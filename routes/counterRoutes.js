@@ -12,16 +12,18 @@ export default function CounterRoutes(dbLogic,greetFunction) {
 
         const user_name = req.params.user_name;
         const userCount = await dbLogic.userCounter(user_name);
-        let counter = await dbLogic.updateAndInsertName();
-        console.log(user_name);
-        console.log(userCount);
+        // let counter = await dbLogic.updateAndInsertName();
+        // console.log(user_name);
+        console.log(userCount.amount_greeted);
+
+        const data = {
+            userCount: userCount,
+            user_name: user_name,
+        }
 
 
-        res.render('counter', {
-            userCount,
-            user_name,
-            counter
-        });
+        res.render('counter', data);
+
     }
     async function resetCounter(req, res) {
 
