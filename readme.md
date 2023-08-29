@@ -1,0 +1,1 @@
+[![Node.js CI](https://github.com/Saffah1910/greeting-with-routes/actions/workflows/node.js.yml/badge.svg)](https://github.com/Saffah1910/greeting-with-routes/actions/workflows/node.js.yml)
