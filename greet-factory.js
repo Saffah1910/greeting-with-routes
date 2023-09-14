@@ -20,6 +20,7 @@ export default function Greet(db) {
                 greeting = 'Molo, ' + name
             }
         }
+       
         return true;
     }
 
